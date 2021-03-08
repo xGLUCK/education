@@ -17,9 +17,11 @@ try:
 
 except ValueError:
     print("Ошибка ввода. Вероятно вы ввели не число или оставили поле пустым")
+    exit(0)
     input()
 except AgeError:
     print("Неправильный возраст")
+    exit(0)
     input()
 
 
