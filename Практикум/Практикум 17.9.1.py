@@ -10,7 +10,7 @@
 
 try:
     numbers = list(map(int, input("Введите последовательность чисел через пробел \n").split())) #получаем список чисел сразу в int
-    user_num = int(input("Введите произвольное число"))
+    user_num = int(input("Введите произвольное число: "))
 except ValueError:
     print('Ошибка ввода. порограмма будет закрыта')
     input()
@@ -49,5 +49,12 @@ def BinSearch(list,num,left,right):
 sorted_numbers = BubbleSort(numbers)
 left = sorted_numbers[0]
 right = sorted_numbers[len(sorted_numbers)-1]
+sought = BinSearch(sorted_numbers,user_num,left,right)
 print('Сортированный список: ', sorted_numbers)
-print('введенное число (%d) идет после числа на позиции %d, отсчет позиции начинается с единицы' % (user_num, BinSearch(sorted_numbers,user_num,left,right)+1))
+if sought == -1:
+    print('Введенное число (%d) находится в начале списка'  % user_num)
+elif sought+1<len(sorted_numbers):
+    print('Введенное число (%d) идет после числа на позиции %d (между числами %d и %d), отсчет позиции начинается с единицы' 
+    % (user_num, sought+1, sorted_numbers[sought], sorted_numbers[sought+1]))
+else:
+    print('Введенное число (%d) находится в конце списка'  % user_num)
